@@ -1,7 +1,7 @@
 
 # EBRSNG App - PHP Backend Repository
 
-Welcome to the EBRSNG PHP backend repository! This repository houses the UI/UX for the EBRSNG app, a project created with [ebrsngapi-php](https://github.com/devfemibadmus/ebrsngapi-php) for the server-side logic. Below, you'll find information on features, the app's history, how it works, a screenshot, the benefits, and contact details.
+Welcome to the EBRSNG Flutter frontend repository! This repository houses the UI/UX for the EBRSNG app, a project created with [ebrsngapi-php](https://github.com/devfemibadmus/ebrsngapi-php) for the server-side logic. Below, you'll find information on features, the app's history, how it works, a screenshot, the benefits, and contact details.
 
 ## Features
 
