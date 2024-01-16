@@ -329,10 +329,10 @@ Future<bool> rewardUser(int reward) async {
     String notificationMessage = 'You just earned $reward from ads you watched';
     Notification newNotification = Notification(
       date: DateTime.now().toString(),
-      type: 'coin',
+      type: 'earn',
       amount: reward,
       comment: notificationMessage,
-      referral: '',
+      referral: '', // You might want to set referral appropriately
       accountId: account.id ?? 0,
     );
 
