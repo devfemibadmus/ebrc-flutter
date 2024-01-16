@@ -286,35 +286,6 @@ Future<String?> signUp(
 }
 
 Future<bool> rewardUser(int reward) async {
-  //print("$bankname, $bankNumber, $bankUserName");
-  final prefs = await SharedPreferences.getInstance();
-  final accountJson = prefs.getString("account");
-  final account = Account.fromJson(jsonDecode(accountJson!));
-  final response = await http.post(
-    rewardUrl,
-    body: jsonEncode(
-      {
-        'username': account.username,
-        'password': account.password,
-        'reward': reward,
-      },
-    ),
-  );
-
-  if (response.statusCode == 200) {
-    var responseJson = jsonDecode(response.body);
-    if (responseJson['status'] == 'success') {
-      //return Account.fromJson(responseJson['account']);
-      return true;
-    } else {
-      return false;
-    }
-  } else {
-    return false;
-  }
-}
-
-Future<bool> rewardUser(int reward) async {
   try {
     final prefs = await SharedPreferences.getInstance();
     String? accountJson = prefs.getString("account");
@@ -329,10 +300,10 @@ Future<bool> rewardUser(int reward) async {
     String notificationMessage = 'You just earned $reward from ads you watched';
     Notification newNotification = Notification(
       date: DateTime.now().toString(),
-      type: 'earn',
+      type: 'coin',
       amount: reward,
       comment: notificationMessage,
-      referral: '', // You might want to set referral appropriately
+      referral: '',
       accountId: account.id ?? 0,
     );
 
