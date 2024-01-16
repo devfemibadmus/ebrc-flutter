@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:ebrsng/constants/database.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class GoogleAdmob {
@@ -113,9 +114,10 @@ class AdManager {
         },
       );
       rewardedAd.show(
-        onUserEarnedReward: (Ad ad, RewardItem reward) {
+        onUserEarnedReward: (Ad ad, RewardItem reward) async {
           if (ad is RewardedAd) {
             print('User earned reward: $reward');
+            await rewardUser(reward.amount.toInt());
           }
         },
       );
