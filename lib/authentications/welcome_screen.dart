@@ -25,6 +25,7 @@ class LoginAndSignupBtn extends StatelessWidget {
             },
             child: Text(
               "Login".toUpperCase(),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
@@ -57,20 +58,20 @@ class WelcomePage extends StatelessWidget {
     return Semantics(
       label:
           "Welcome to ebrsng, do task and earn cash into your bank account hence no social media task",
-      child: Background(
+      child: const Background(
         child: SingleChildScrollView(
           child: SafeArea(
             child: Responsive(
               desktop: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: WelcomeImage(),
                   ),
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         SizedBox(
                           width: 450,
                           child: LoginAndSignupBtn(),
@@ -80,7 +81,7 @@ class WelcomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              mobile: const MobileWelcomePage(),
+              mobile: MobileWelcomePage(),
             ),
           ),
         ),
@@ -96,12 +97,12 @@ class MobileWelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const WelcomeImage(),
+        WelcomeImage(),
         Row(
-          children: const [
+          children: [
             Spacer(),
             Expanded(
               flex: 8,

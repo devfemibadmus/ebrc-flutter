@@ -16,12 +16,12 @@ class SignUpFormState extends State<SignUpForm> {
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _refereeController = TextEditingController();
+  final RefereeController = TextEditingController();
   final _signUpkey = GlobalKey<FormState>();
   String? _usernameError = '';
   String? _emailError = '';
   String? _passwordError = '';
-  String? _refereeError = '';
+  String? RefereeError = '';
   bool _loading = false;
 
   @override
@@ -30,7 +30,7 @@ class SignUpFormState extends State<SignUpForm> {
     _usernameController.addListener(_validateUsername);
     _emailController.addListener(_validateEmail);
     _passwordController.addListener(_validatePassword);
-    _refereeController.addListener(_validateReferee);
+    RefereeController.addListener(_validateReferee);
   }
 
   void _validateUsername() async {
@@ -82,46 +82,46 @@ class SignUpFormState extends State<SignUpForm> {
           _usernameError = 'Internet connection not available';
           _emailError = 'Internet connection not available';
           _passwordError = 'Internet connection not available';
-          _refereeError = 'Internet connection not available';
+          RefereeError = 'Internet connection not available';
         },
       );
     }
   }
 
   void _validateReferee() async {
-    if (_refereeController.text.isEmpty) {
+    if (RefereeController.text.isEmpty) {
       setState(
         () {
-          _refereeError = 'Please enter referee username or nobody';
+          RefereeError = 'Please enter referee username or nobody';
         },
       );
     }
     try {
-      if (_refereeController.text.length > 1 &&
-          _refereeError == 'Please enter referee username or nobody') {
+      if (RefereeController.text.length > 1 &&
+          RefereeError == 'Please enter referee username or nobody') {
         setState(
           () {
-            _refereeError = 'connection not available';
+            RefereeError = 'connection not available';
           },
         );
       }
-      final exist = await usernameExist(_refereeController.text);
-      if (exist == 'true' || _refereeController.text == 'nobody') {
+      final exist = await usernameExist(RefereeController.text);
+      if (exist == 'true' || RefereeController.text == 'nobody') {
         setState(
           () {
-            _refereeError = null;
+            RefereeError = null;
           },
         );
       } else if (exist == 'connection') {
         setState(
           () {
-            _refereeError = 'connection not available';
+            RefereeError = 'connection not available';
           },
         );
       } else {
         setState(
           () {
-            _refereeError = 'username not found! use \'nobody\'';
+            RefereeError = 'username not found! use \'nobody\'';
           },
         );
       }
@@ -131,7 +131,7 @@ class SignUpFormState extends State<SignUpForm> {
           _usernameError = 'Internet connection not available';
           _emailError = 'Internet connection not available';
           _passwordError = 'Internet connection not available';
-          _refereeError = 'Internet connection not available';
+          RefereeError = 'Internet connection not available';
         },
       );
     }
@@ -204,7 +204,7 @@ class SignUpFormState extends State<SignUpForm> {
               controller: _usernameController,
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
-              cursorColor: kPrimaryColor,
+              cursorColor: bgColor,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your username';
@@ -227,7 +227,7 @@ class SignUpFormState extends State<SignUpForm> {
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
-              cursorColor: kPrimaryColor,
+              cursorColor: bgColor,
               onSaved: (email) {},
               validator: (value) {
                 if (value!.isEmpty) {
@@ -251,7 +251,7 @@ class SignUpFormState extends State<SignUpForm> {
               controller: _passwordController,
               textInputAction: TextInputAction.done,
               obscureText: true,
-              cursorColor: kPrimaryColor,
+              cursorColor: bgColor,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your passworrd';
@@ -271,14 +271,14 @@ class SignUpFormState extends State<SignUpForm> {
             ),
             const SizedBox(height: defaultPadding / 2),
             TextFormField(
-              controller: _refereeController,
+              controller: RefereeController,
               textInputAction: TextInputAction.done,
-              cursorColor: kPrimaryColor,
+              cursorColor: bgColor,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter referral username or nobody';
                 }
-                return _refereeError;
+                return RefereeError;
               },
               onChanged: (String value) {
                 _signUpkey.currentState!.validate();
@@ -300,17 +300,17 @@ class SignUpFormState extends State<SignUpForm> {
                     _loading = true;
                   });
                   signUp(_emailController.text, _usernameController.text,
-                          _passwordController.text, _refereeController.text)
+                          _passwordController.text, RefereeController.text)
                       .then(
                     (value) {
                       if (value == 'error') {
                         setState(() {
-                          _refereeError = 'Failed to Signup';
+                          RefereeError = 'Failed to Signup';
                           _loading = false;
                         });
                       } else if (value == 'connection') {
                         setState(() {
-                          _refereeError = 'Connection Error';
+                          RefereeError = 'Connection Error';
                           _loading = false;
                         });
                       } else {
@@ -329,6 +329,7 @@ class SignUpFormState extends State<SignUpForm> {
               },
               child: Text(
                 "Sign Up".toUpperCase(),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
             const SizedBox(height: defaultPadding),
@@ -356,19 +357,19 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Semantics(
       label: "Welcome to ebrsng signup an account and start earning",
-      child: Background(
+      child: const Background(
         child: SingleChildScrollView(
           child: Responsive(
-            mobile: const MobileSignUpPage(),
+            mobile: MobileSignUpPage(),
             desktop: Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: SignUpPageTopImage(),
                 ),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       SizedBox(
                         width: 450,
                         child: SignUpForm(),
@@ -393,12 +394,12 @@ class MobileSignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const SignUpPageTopImage(),
+        SignUpPageTopImage(),
         Row(
-          children: const [
+          children: [
             Spacer(),
             Expanded(
               flex: 8,

@@ -89,7 +89,7 @@ class SigninFormState extends State<SigninForm> {
               controller: _usernameController,
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
-              cursorColor: kPrimaryColor,
+              cursorColor: bgColor,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your username';
@@ -112,7 +112,7 @@ class SigninFormState extends State<SigninForm> {
               controller: _passwordController,
               textInputAction: TextInputAction.done,
               obscureText: true,
-              cursorColor: kPrimaryColor,
+              cursorColor: bgColor,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your passworrd';
@@ -140,6 +140,7 @@ class SigninFormState extends State<SigninForm> {
                   signIn(_usernameController.text, _passwordController.text)
                       .then(
                     (value) {
+                      // print(value);
                       setState(() {
                         _loading = false;
                       });
@@ -152,6 +153,7 @@ class SigninFormState extends State<SigninForm> {
                           _passwordError = 'Connection Error';
                         });
                       } else {
+                        print("Going in");
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (context) => HomePage(),
@@ -162,7 +164,8 @@ class SigninFormState extends State<SigninForm> {
                   );
                 }
               },
-              child: Text("Sign In".toUpperCase()),
+              child: Text("Sign In".toUpperCase(),
+                  style: const TextStyle(color: Colors.white)),
             ),
             const SizedBox(height: defaultPadding),
             AlreadyHaveAnAccountCheck(
@@ -218,19 +221,19 @@ class SigninPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Semantics(
       label: "welcome back signin your account and start earning",
-      child: Background(
+      child: const Background(
         child: SingleChildScrollView(
           child: Responsive(
-            mobile: const MobileSigninPage(),
+            mobile: MobileSigninPage(),
             desktop: Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: SigninPageTopImage(),
                 ),
                 Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       SizedBox(
                         width: 450,
                         child: SigninForm(),
@@ -254,12 +257,12 @@ class MobileSigninPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const SigninPageTopImage(),
+        SigninPageTopImage(),
         Row(
-          children: const [
+          children: [
             Spacer(),
             Expanded(
               flex: 8,
