@@ -14,7 +14,6 @@ class CashPageState extends State<CashPage> {
   bool error = false;
   bool webloaded = false;
   Widget web = Container();
-  late WebViewController webViewController;
   @override
   void initState() {
     super.initState();
@@ -34,7 +33,7 @@ class CashPageState extends State<CashPage> {
             if (snapshot.hasData) {
               Account? user = snapshot.data;
               String bank =
-                  "${user!.account_name}, ${user.account_number}, ${user.account_uname}";
+                  "${user!.accountName}, ${user.accountNumber}, ${user.accountUname}";
 
               if (error == true) {
                 return const Center(
@@ -43,14 +42,14 @@ class CashPageState extends State<CashPage> {
                     style: TextStyle(color: Colors.red),
                   ),
                 );
-              } else if (user.account_editable == true) {
+              } else if (user.accountEditable == true) {
                 return const Center(
                   child: Text(
                     "Go to settings and set your bank details to recieve payments.",
                     style: TextStyle(color: Colors.red),
                   ),
                 );
-              } else if (user.pending_cashout == true) {
+              } else if (user.pendingCashout == true) {
                 return const Center(
                   child: Text(
                     "Oops! you have a pending withdraw check your notification or await 24hrs for the payment.",
@@ -60,43 +59,53 @@ class CashPageState extends State<CashPage> {
               } else {
                 return Stack(
                   children: <Widget>[
-                    WebView(
-                      zoomEnabled: false,
-                      onWebResourceError: (error) {
-                        //print("An error occurred: ${error.description}");
-                        webError();
-                      },
-                      initialUrl: cashOutUrl.toString(),
-                      javascriptMode: JavascriptMode.unrestricted,
-                      onWebViewCreated: (controller) {
-                        setState(
-                          () {
-                            webViewController = controller;
-                          },
-                        );
-                      },
-                      onPageFinished: (url) {
-                        setState(() {
-                          webloaded = true;
-                        });
-                        webViewController.runJavascript(
+                    WebViewWidget(
+                      controller: WebViewController()
+                        ..setJavaScriptMode(JavaScriptMode.unrestricted)
+                        ..setBackgroundColor(const Color(0x00000000))
+                        ..setNavigationDelegate(
+                          NavigationDelegate(
+                            onProgress: (int progress) {
+                              setState(() {
+                                webloaded = false;
+                              });
+                            },
+                            onPageStarted: (String url) {
+                              setState(() {
+                                webloaded = false;
+                              });
+                            },
+                            onPageFinished: (String url) {
+                              setState(() {
+                                webloaded = true;
+                              });
+                            },
+                            onWebResourceError: (WebResourceError error) {
+                              webError();
+                            },
+                            onNavigationRequest: (NavigationRequest request) {
+                              return NavigationDecision.navigate;
+                            },
+                          ),
+                        )
+                        ..loadRequest(cashOutUrl)
+                        ..runJavaScript(
                           """
                       function fillLoginData() {
                         document.getElementById('username').value='${user.username}';
                         document.getElementById('password').value='${user.password}';
                         document.getElementById('banking').innerHTML='$bank';
-                        setCurrentBalance(${user.account_balance});
+                        setCurrentBalance(${user.accountBalance});
                       }
                       fillLoginData();
                     """,
-                        );
-                      },
+                        ),
                     ),
                     webloaded == false
                         ? const Center(
                             child: CircularProgressIndicator(
                                 color: kPrimaryLightColor))
-                        : Stack(),
+                        : const Stack(),
                   ],
                 );
               }

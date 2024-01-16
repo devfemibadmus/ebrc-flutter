@@ -164,8 +164,8 @@ class SettingsPageState extends State<SettingsPage> {
                               controller: _bnameController,
                               keyboardType: TextInputType.emailAddress,
                               textInputAction: TextInputAction.next,
-                              cursorColor: kPrimaryColor,
-                              enabled: user!.account_editable,
+                              cursorColor: bgColor,
+                              enabled: user!.accountEditable,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your bank name';
@@ -176,8 +176,8 @@ class SettingsPageState extends State<SettingsPage> {
                                 _updateAccountkey.currentState!.validate();
                               },
                               decoration: InputDecoration(
-                                hintText: user.account_editable == false
-                                    ? user.account_name
+                                hintText: user.accountEditable == false
+                                    ? user.accountName
                                     : 'Bank Name',
                                 prefixIcon: const Padding(
                                   padding: EdgeInsets.all(defaultPadding),
@@ -190,8 +190,8 @@ class SettingsPageState extends State<SettingsPage> {
                               controller: _bnumberController,
                               keyboardType: TextInputType.emailAddress,
                               textInputAction: TextInputAction.next,
-                              cursorColor: kPrimaryColor,
-                              enabled: user.account_editable,
+                              cursorColor: bgColor,
+                              enabled: user.accountEditable,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your bank account number';
@@ -202,8 +202,8 @@ class SettingsPageState extends State<SettingsPage> {
                                 _updateAccountkey.currentState!.validate();
                               },
                               decoration: InputDecoration(
-                                hintText: user.account_editable == false
-                                    ? user.account_number.toString()
+                                hintText: user.accountEditable == false
+                                    ? user.accountNumber.toString()
                                     : 'Bank Account Number',
                                 prefixIcon: const Padding(
                                   padding: EdgeInsets.all(defaultPadding),
@@ -216,8 +216,8 @@ class SettingsPageState extends State<SettingsPage> {
                               controller: _bunameController,
                               keyboardType: TextInputType.emailAddress,
                               textInputAction: TextInputAction.next,
-                              cursorColor: kPrimaryColor,
-                              enabled: user.account_editable,
+                              cursorColor: bgColor,
+                              enabled: user.accountEditable,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your bank account name';
@@ -228,8 +228,8 @@ class SettingsPageState extends State<SettingsPage> {
                                 _updateAccountkey.currentState!.validate();
                               },
                               decoration: InputDecoration(
-                                hintText: user.account_editable == false
-                                    ? user.account_uname
+                                hintText: user.accountEditable == false
+                                    ? user.accountUname
                                     : 'First Name Middle Name Last Name',
                                 prefixIcon: const Padding(
                                   padding: EdgeInsets.all(defaultPadding),
@@ -241,8 +241,8 @@ class SettingsPageState extends State<SettingsPage> {
                             TextFormField(
                               controller: _passwordController,
                               textInputAction: TextInputAction.done,
-                              cursorColor: kPrimaryColor,
-                              enabled: user.account_editable,
+                              cursorColor: bgColor,
+                              enabled: user.accountEditable,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your passworrd';
@@ -273,7 +273,7 @@ class SettingsPageState extends State<SettingsPage> {
                             const SizedBox(height: defaultPadding / 2),
                             ElevatedButton(
                               onPressed: () {
-                                if (user.account_editable) {
+                                if (user.accountEditable ?? false) {
                                   setState(() {
                                     _bloading = true;
                                   });
@@ -317,7 +317,10 @@ class SettingsPageState extends State<SettingsPage> {
                                       '');
                                 }
                               },
-                              child: Text("save".toUpperCase()),
+                              child: Text(
+                                "save".toUpperCase(),
+                                style: const TextStyle(color: Colors.white),
+                              ),
                             ),
                             const SizedBox(height: defaultPadding),
                           ],
@@ -336,7 +339,7 @@ class SettingsPageState extends State<SettingsPage> {
                             TextFormField(
                               controller: _oldPasswordController,
                               textInputAction: TextInputAction.done,
-                              cursorColor: kPrimaryColor,
+                              cursorColor: bgColor,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your passworrd';
@@ -358,7 +361,7 @@ class SettingsPageState extends State<SettingsPage> {
                             TextFormField(
                               controller: _newPasswordController,
                               textInputAction: TextInputAction.done,
-                              cursorColor: kPrimaryColor,
+                              cursorColor: bgColor,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your new passworrd';
@@ -403,7 +406,8 @@ class SettingsPageState extends State<SettingsPage> {
                                   );
                                 }
                               },
-                              child: Text("save".toUpperCase()),
+                              child: Text("save".toUpperCase(),
+                                  style: const TextStyle(color: Colors.white)),
                             ),
                             const SizedBox(height: defaultPadding),
                           ],

@@ -23,13 +23,22 @@ class ReferralPageState extends State<ReferralPage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               Account? user = snapshot.data;
-              int length = user!.notifications.length;
+              int length = user!.notifications!.length;
+              if (length < 1) {
+                return const Center(
+                  child: Text("You have referral no one so far"),
+                );
+              }
               return ListView.builder(
                 itemCount: length,
                 itemBuilder: (context, index) {
-                  if (user.notifications[index].referral == 'nobody' ||
-                      user.notifications[index].referral == '') {
-                    //
+                  if (user.notifications![index].referral == 'nobody' ||
+                      user.notifications![index].referral == '') {
+                    if (index == (length - 1)) {
+                      return const Center(
+                        child: Text("You have referral no one so far"),
+                      );
+                    }
                   } else {
                     return Card(
                       child: Row(
@@ -42,7 +51,7 @@ class ReferralPageState extends State<ReferralPage> {
                               ),
                               padding: const EdgeInsets.all(10),
                               child: Text(
-                                user.notifications[index].referral,
+                                user.notifications![index].referral,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
@@ -56,14 +65,14 @@ class ReferralPageState extends State<ReferralPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                user.notifications[index].comment,
+                                user.notifications![index].comment,
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
-                                user.notifications[index].date,
+                                user.notifications![index].date,
                                 style: const TextStyle(
                                   color: Colors.grey,
                                 ),

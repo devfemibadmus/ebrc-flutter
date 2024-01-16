@@ -1,6 +1,6 @@
 import 'package:ebrsng/constants/variables.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter_plus/webview_flutter_plus.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class WebsitePage extends StatefulWidget {
   const WebsitePage({super.key});
@@ -32,17 +32,21 @@ class WebsitePageState extends State<WebsitePage> {
         ),
         body: error == true
             ? body
-            : WebViewPlus(
-                initialUrl: websiteUrl.toString(),
-                navigationDelegate: (NavigationRequest request) {
-                  if (request.url.startsWith('http://') ||
-                      request.url.startsWith('https://')) {
-                    return NavigationDecision.navigate;
-                  }
-                  // If the URL is not a http(s) link, do not allow navigation
-                  return NavigationDecision.prevent;
-                },
-              ),
+            : WebViewWidget(
+                controller: WebViewController()
+                  ..setJavaScriptMode(JavaScriptMode.unrestricted)
+                  ..setBackgroundColor(const Color(0x00000000))
+                  ..setNavigationDelegate(
+                    NavigationDelegate(
+                      onWebResourceError: (WebResourceError error) {
+                        webError();
+                      },
+                      onNavigationRequest: (NavigationRequest request) {
+                        return NavigationDecision.navigate;
+                      },
+                    ),
+                  )
+                  ..loadRequest(websiteUrl)),
       ),
     );
   }

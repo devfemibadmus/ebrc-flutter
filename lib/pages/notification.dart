@@ -23,7 +23,12 @@ class NotificationPageState extends State<NotificationPage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               Account? user = snapshot.data;
-              int length = user!.notifications.length;
+              int length = user!.notifications!.length;
+              if (length < 1) {
+                return const Center(
+                  child: Text("You have nothing here"),
+                );
+              }
               return ListView.builder(
                 itemCount: length,
                 itemBuilder: (context, index) {
@@ -38,18 +43,19 @@ class NotificationPageState extends State<NotificationPage> {
                             ),
                             padding: const EdgeInsets.all(10),
                             child: Text(
-                              user.notifications[index].type == 'pending'
-                                  ? user.notifications[index].amount.toString()
-                                  : user.notifications[index].type != "withdraw"
-                                      ? '+${user.notifications[index].amount}'
-                                      : '-${user.notifications[index].amount}',
+                              user.notifications![index].type == 'pending'
+                                  ? user.notifications![index].amount.toString()
+                                  : user.notifications![index].type !=
+                                          "withdraw"
+                                      ? '+${user.notifications![index].amount}'
+                                      : '-${user.notifications![index].amount}',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                                 color:
-                                    user.notifications[index].type == 'pending'
+                                    user.notifications![index].type == 'pending'
                                         ? Colors.black
-                                        : user.notifications[index].type !=
+                                        : user.notifications![index].type !=
                                                 "withdraw"
                                             ? Colors.green
                                             : Colors.red,
@@ -62,18 +68,18 @@ class NotificationPageState extends State<NotificationPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              user.notifications[index].comment,
+                              user.notifications![index].comment,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: user.notifications[index].comment
+                                color: user.notifications![index].comment
                                         .contains('SPAM')
                                     ? Colors.red
                                     : null,
                               ),
                             ),
                             Text(
-                              user.notifications[index].date,
+                              user.notifications![index].date,
                               style: const TextStyle(
                                 color: Colors.grey,
                               ),
