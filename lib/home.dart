@@ -37,10 +37,10 @@ class IndexPageState extends State<IndexPage> {
 
 class HomePage extends StatelessWidget {
   HomePage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
-  final _advancedDrawerController = AdvancedDrawerController();
+  final _AdvancedDrawerController = AdvancedDrawerController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +51,8 @@ class HomePage extends StatelessWidget {
         future: getAccountFromSharedPrefs(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
+            print(snapshot);
+            print("snapshot");
             return const WelcomePage();
           } else if (snapshot.hasData) {
             Account? user = snapshot.data;
@@ -58,7 +60,7 @@ class HomePage extends StatelessWidget {
               backdropColor: bgColor,
               animationCurve: Curves.easeInOut,
               animationDuration: const Duration(milliseconds: 300),
-              controller: _advancedDrawerController,
+              controller: _AdvancedDrawerController,
               animateChildDecoration: true,
               rtlOpening: false,
               disabledGestures: false,
@@ -92,10 +94,6 @@ class HomePage extends StatelessWidget {
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600),
                               ),
-                              Icon(Icons.verified,
-                                  color: user.activated
-                                      ? Colors.green
-                                      : Colors.red),
                             ],
                           ),
                         ),
@@ -122,22 +120,6 @@ class HomePage extends StatelessWidget {
                           },
                           leading: const Icon(Icons.task),
                           title: const Text('Tasks'),
-                        ),
-                        ListTile(
-                          onTap: () async {
-                            await refreshAccount().then((value) {
-                              Navigator.pushReplacementNamed(context, '/');
-                            });
-                          },
-                          leading: const Icon(Icons.refresh),
-                          title: const Text('Refresh'),
-                        ),
-                        ListTile(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/activate');
-                          },
-                          leading: const Icon(Icons.verified),
-                          title: const Text('Activate'),
                         ),
                         ListTile(
                           onTap: () {
@@ -176,7 +158,7 @@ class HomePage extends StatelessWidget {
                         const Spacer(),
                         const ListTile(
                           leading: Text(
-                            'v 2.0.0',
+                            'v 1.0.3',
                             style: TextStyle(color: kPrimaryColor),
                           ),
                         ),
@@ -189,11 +171,13 @@ class HomePage extends StatelessWidget {
                 backgroundColor: Colors.grey.shade100,
                 appBar: AppBar(
                   backgroundColor: bgColor,
-                  title: const Text('Earn By Rewards NG'),
+                  title: const Text('Earn By Rewards NG',
+                      style: TextStyle(color: Colors.white, fontSize: 18)),
                   leading: IconButton(
+                    color: Colors.white,
                     onPressed: _handleMenuButtonPressed,
                     icon: ValueListenableBuilder<AdvancedDrawerValue>(
-                      valueListenable: _advancedDrawerController,
+                      valueListenable: _AdvancedDrawerController,
                       builder: (_, value, __) {
                         return AnimatedSwitcher(
                           duration: const Duration(milliseconds: 250),
@@ -222,20 +206,20 @@ class HomePage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                Text(
                                   '₦',
-                                  style: TextStyle(
-                                      color: kPrimaryColor, fontSize: 22),
+                                  style:
+                                      TextStyle(color: bgColor, fontSize: 22),
                                 ),
                                 const SizedBox(
                                   width: 3,
                                 ),
                                 Text(
-                                  formatNumber(user.earn_balance),
-                                  style: const TextStyle(
+                                  formatNumber(user.earnBalance ?? 0),
+                                  style: TextStyle(
                                     fontSize: 28,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                    color: bgColor,
                                   ),
                                 ),
                               ],
@@ -306,11 +290,11 @@ class HomePage extends StatelessWidget {
                                     width: 3,
                                   ),
                                   Text(
-                                    formatNumber(user.account_balance),
+                                    formatNumber(user.accountBalance ?? 0),
                                     style: const TextStyle(
                                       fontSize: 37,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.green,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ],
@@ -354,11 +338,11 @@ class HomePage extends StatelessWidget {
                                     width: 3,
                                   ),
                                   Text(
-                                    formatNumber(user.coin_balance),
+                                    formatNumber(user.coinBalance ?? 0),
                                     style: const TextStyle(
                                       fontSize: 37,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.green,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ],
@@ -381,6 +365,6 @@ class HomePage extends StatelessWidget {
   }
 
   void _handleMenuButtonPressed() {
-    _advancedDrawerController.showDrawer();
+    _AdvancedDrawerController.showDrawer();
   }
 }
