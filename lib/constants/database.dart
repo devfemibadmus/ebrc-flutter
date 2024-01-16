@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+// This are movies i watch while coding...they are interesting i save them here to watch later
+
 // Monster After Dark
 // Final Destination
 // Jakie Chanuary
@@ -23,25 +25,17 @@ Account defaultAccount = Account(
   id: 0,
   email: 'email',
   username: 'username',
-  account_balance: 0,
+  accountBalance: 0,
   referral: 'referral',
   password: 'password',
-  earn_balance: 0,
+  earnBalance: 0,
   notifications: [],
-  account_name: "fcmb",
-  account_number: 0,
-  coin_balance: 0,
-  reward_ads: false,
-  tic_tac_toe_1: false,
-  tic_tac_toe_2: false,
-  tic_tac_toe_3: false,
-  user_referral: false,
-  super_referral: false,
-  might_referral: false,
-  premium_referral: false,
-  account_editable: false,
-  account_uname: '',
-  pending_cashout: false,
+  accountName: "fcmb",
+  accountNumber: 0,
+  coinBalance: 0,
+  accountEditable: false,
+  accountUname: '',
+  pendingCashout: false,
 );
 
 class Account {
@@ -50,22 +44,14 @@ class Account {
   String? referral;
   String? username;
   String? password;
-  String? account_name;
-  String? account_uname;
-  int? account_number;
-  int? account_balance;
-  int? coin_balance;
-  int? earn_balance;
-  bool? reward_ads;
-  bool? account_editable;
-  bool? tic_tac_toe_1;
-  bool? tic_tac_toe_2;
-  bool? tic_tac_toe_3;
-  bool? user_referral;
-  bool? super_referral;
-  bool? might_referral;
-  bool? premium_referral;
-  bool? pending_cashout;
+  String? accountName;
+  String? accountUname;
+  int? accountNumber;
+  int? accountBalance;
+  int? coinBalance;
+  int? earnBalance;
+  bool? accountEditable;
+  bool? pendingCashout;
   List<Notification>? notifications;
 
   Account({
@@ -74,23 +60,15 @@ class Account {
     this.referral,
     this.username,
     this.password,
-    this.account_name,
-    this.account_uname,
-    this.account_number,
-    this.account_balance,
+    this.accountName,
+    this.accountUname,
+    this.accountNumber,
+    this.accountBalance,
     this.notifications,
-    this.coin_balance,
-    this.earn_balance,
-    this.account_editable,
-    this.reward_ads,
-    this.tic_tac_toe_1,
-    this.tic_tac_toe_2,
-    this.tic_tac_toe_3,
-    this.user_referral,
-    this.super_referral,
-    this.might_referral,
-    this.premium_referral,
-    this.pending_cashout,
+    this.coinBalance,
+    this.earnBalance,
+    this.accountEditable,
+    this.pendingCashout,
   });
 
   factory Account.fromJson(Map<String, dynamic> json) {
@@ -106,32 +84,17 @@ class Account {
       referral: json['referral'],
       username: json['username'],
       password: json['password'],
-      account_name: json['account_name'],
-      account_uname: json['account_uname'],
-      account_editable:
-          json['account_editable'] == 1 || json['account_editable'] == true,
-      account_number: json['account_number'],
-      earn_balance: json['earn_balance'],
-      account_balance: json['account_balance'],
+      accountName: json['accountName'],
+      accountUname: json['accountUname'],
+      accountEditable:
+          json['accountEditable'] == 1 || json['accountEditable'] == true,
+      accountNumber: json['accountNumber'],
+      earnBalance: json['earnBalance'],
+      accountBalance: json['accountBalance'],
       notifications: notificationsList,
-      coin_balance: json['coin_balance'],
-      reward_ads: json['reward_ads'] == 1 || json['reward_ads'] == true,
-      tic_tac_toe_1:
-          json['tic_tac_toe_1'] == 1 || json['tic_tac_toe_1'] == true,
-      tic_tac_toe_2:
-          json['tic_tac_toe_2'] == 1 || json['tic_tac_toe_2'] == true,
-      tic_tac_toe_3:
-          json['tic_tac_toe_3'] == 1 || json['tic_tac_toe_3'] == true,
-      user_referral:
-          json['user_referral'] == 1 || json['user_referral'] == true,
-      super_referral:
-          json['super_referral'] == 1 || json['super_referral'] == true,
-      might_referral:
-          json['might_referral'] == 1 || json['might_referral'] == true,
-      premium_referral:
-          json['premium_referral'] == 1 || json['premium_referral'] == true,
-      pending_cashout:
-          json['pending_cashout'] == 1 || json['pending_cashout'] == true,
+      coinBalance: json['coinBalance'],
+      pendingCashout:
+          json['pendingCashout'] == 1 || json['pendingCashout'] == true,
     );
   }
 
@@ -146,23 +109,15 @@ class Account {
       'referral': referral,
       'username': username,
       'password': password,
-      'account_editable': account_editable,
-      'account_uname': account_uname,
-      'account_name': account_name,
-      'account_number': account_number,
-      'account_balance': account_balance,
+      'accountEditable': accountEditable,
+      'accountUname': accountUname,
+      'accountName': accountName,
+      'accountNumber': accountNumber,
+      'accountBalance': accountBalance,
       'notifications': notificationsList,
-      'coin_balance': coin_balance,
-      'earn_balance': earn_balance,
-      'reward_ads': reward_ads,
-      'tic_tac_toe_1': tic_tac_toe_1,
-      'tic_tac_toe_2': tic_tac_toe_2,
-      'tic_tac_toe_3': tic_tac_toe_3,
-      'user_referral': user_referral,
-      'super_referral': super_referral,
-      'might_referral': might_referral,
-      'premium_referral': premium_referral,
-      'pending_cashout': pending_cashout,
+      'coinBalance': coinBalance,
+      'earnBalance': earnBalance,
+      'pendingCashout': pendingCashout,
     };
   }
 }
@@ -173,7 +128,7 @@ class Notification {
   int amount;
   String comment;
   String referral;
-  int account_id;
+  int accountId;
 
   Notification(
       {required this.date,
@@ -181,7 +136,7 @@ class Notification {
       required this.amount,
       required this.comment,
       required this.referral,
-      required this.account_id});
+      required this.accountId});
 
   factory Notification.fromJson(Map<String, dynamic> json) {
     return Notification(
@@ -190,7 +145,7 @@ class Notification {
       amount: json['amount'],
       referral: json['referral'],
       comment: json['comment'],
-      account_id: json['account_id'],
+      accountId: json['accountId'],
     );
   }
 
@@ -201,7 +156,7 @@ class Notification {
       'amount': amount,
       'comment': comment,
       'referral': referral,
-      'account_id': account_id,
+      'accountId': accountId,
     };
   }
 }
@@ -217,8 +172,8 @@ Future<Account?> signIn(String username, String password) async {
 
   if (response.statusCode == 200) {
     var responseJson = jsonDecode(response.body);
-    print(responseJson);
     if (responseJson['status'] == 'success') {
+      print(responseJson);
       var account = Account.fromJson(responseJson['account']);
       account.notifications = (responseJson['notifications'] as List<dynamic>)
           .map((e) => Notification.fromJson(e))
@@ -226,14 +181,16 @@ Future<Account?> signIn(String username, String password) async {
       account.notifications = account.notifications!.reversed.toList();
       account.password = password;
       final prefs = await SharedPreferences.getInstance();
+      print(account.toJson());
       await prefs.setString('account', jsonEncode(account.toJson()));
+      print(Account.fromJson(responseJson['account']));
       return Account.fromJson(responseJson['account']);
     } else {
-      //print(responseJson['message']);
+      print(responseJson['message']);
       return null;
     }
   } else {
-    //print('object');
+    print('object');
     return defaultAccount;
   }
 }
@@ -241,7 +198,7 @@ Future<Account?> signIn(String username, String password) async {
 Future<Account> getAccountFromSharedPrefs() async {
   final prefs = await SharedPreferences.getInstance();
   final accountJson = prefs.getString("account");
-  //print(accountJson);
+  print(accountJson);
   //print('accountJson');
   if (accountJson == null) {
     throw const FormatException('No Account');
@@ -249,18 +206,6 @@ Future<Account> getAccountFromSharedPrefs() async {
     final account = Account.fromJson(jsonDecode(accountJson));
     //print(account.notifications[0]);
     return account;
-  }
-}
-
-Future<void> refreshAccount() async {
-  final prefs = await SharedPreferences.getInstance();
-  final accountJson = prefs.getString("account");
-  if (accountJson == null) {
-    throw const FormatException('No Account');
-  } else {
-    final account = Account.fromJson(jsonDecode(accountJson));
-    //print(account.password);
-    await signIn(account.username ?? "", account.password ?? "");
   }
 }
 
@@ -294,7 +239,7 @@ Future createNewNotification(String type, double amount, String comment) async {
       {
         //'username': username,
         //'password': password,
-        //"account_id": id.toString(),
+        //"accountId": id.toString(),
         //"date": date,
         "type": type,
         "amount": amount.toString(),
@@ -341,30 +286,60 @@ Future<String?> signUp(
 }
 
 Future<bool> rewardUser(int reward) async {
-  //print("$bankname, $bankNumber, $bankUserName");
-  final prefs = await SharedPreferences.getInstance();
-  final accountJson = prefs.getString("account");
-  final account = Account.fromJson(jsonDecode(accountJson!));
-  final response = await http.post(
-    rewardUrl,
-    body: jsonEncode(
-      {
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    String? accountJson = prefs.getString("account");
+    if (accountJson == null) {
+      return false;
+    }
+    Account account = Account.fromJson(jsonDecode(accountJson));
+    // Update the account's reward
+    account.coinBalance = (account.coinBalance ?? 0) + reward;
+
+    // Add a notification
+    String notificationMessage = 'You just earned $reward from ads you watched';
+    Notification newNotification = Notification(
+      date: DateTime.now().toString(),
+      type: 'coin',
+      amount: reward,
+      comment: notificationMessage,
+      referral: '',
+      accountId: account.id ?? 0,
+    );
+
+    // Add the new notification to the account's notifications list
+    account.notifications ??= [];
+    account.notifications!.insert(0, newNotification);
+
+    // Update shared preferences with the modified account
+    prefs.setString("account", jsonEncode(account.toJson()));
+
+    // Now, proceed with sending the reward information to the server
+    final response = await http.post(
+      rewardUrl,
+      body: jsonEncode({
         'username': account.username,
         'password': account.password,
         'reward': reward,
-      },
-    ),
-  );
+      }),
+    );
 
-  if (response.statusCode == 200) {
-    var responseJson = jsonDecode(response.body);
-    if (responseJson['status'] == 'success') {
-      //return Account.fromJson(responseJson['account']);
-      return true;
+    if (response.statusCode == 200) {
+      var responseJson = jsonDecode(response.body);
+      if (responseJson['status'] == 'success') {
+        // Handle the success scenario
+        return true;
+      } else {
+        // Handle the scenario where the status is not 'success'
+        return false;
+      }
     } else {
+      // Handle the scenario where the HTTP request fails
       return false;
     }
-  } else {
+  } catch (error) {
+    // Handle any unexpected errors during the execution
+    print('Error: $error');
     return false;
   }
 }
@@ -380,9 +355,9 @@ Future<bool> bank(
       {
         'username': account.username,
         'password': account.password,
-        'account_name': bankname,
-        'account_uname': bankUserName,
-        'account_number': bankNumber,
+        'accountName': bankname,
+        'accountUname': bankUserName,
+        'accountNumber': bankNumber,
       },
     ),
   );
