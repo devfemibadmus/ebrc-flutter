@@ -1,37 +1,10 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
 
 const kPrimaryLightColor = Color.fromARGB(255, 201, 239, 199);
-const kPrimaryColor = Color.fromARGB(255, 69, 69, 69);
-Color bgColor = Colors.grey.shade900;
+const kPrimaryColor = Colors.white;
+Color bgColor = const Color.fromARGB(255, 60, 57, 70);
 const double defaultPadding = 16.0;
-
-class GoogleAdmob {
-  static String get bannerAdUnitId {
-    if (Platform.isAndroid) {
-      return 'ca-app-pub-3805485538389573/8680759580';
-    } else {
-      throw UnsupportedError('Unsupported platform');
-    }
-  }
-
-  static String get interstitialAdUnitId {
-    if (Platform.isAndroid) {
-      return 'ca-app-pub-3805485538389573/9008611388';
-    } else {
-      throw UnsupportedError('Unsupported platform');
-    }
-  }
-
-  static String get rewardedAdUnitId {
-    if (Platform.isAndroid) {
-      return 'ca-app-pub-3805485538389573/5644081441';
-    } else {
-      throw UnsupportedError('Unsupported platform');
-    }
-  }
-}
 
 class Background extends StatelessWidget {
   final Widget child;
@@ -86,14 +59,14 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
       children: <Widget>[
         Text(
           login ? "Don’t have an Account ? " : "Already have an Account ? ",
-          style: const TextStyle(color: kPrimaryColor),
+          style: TextStyle(color: bgColor),
         ),
         GestureDetector(
           onTap: press as void Function()?,
           child: Text(
             login ? "Sign Up" : "Sign In",
-            style: const TextStyle(
-              color: kPrimaryColor,
+            style: TextStyle(
+              color: bgColor,
               fontSize: 35,
             ),
           ),
@@ -147,12 +120,12 @@ class OrDivider extends StatelessWidget {
       child: Row(
         children: <Widget>[
           buildDivider(),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
               "OR",
               style: TextStyle(
-                color: kPrimaryColor,
+                color: bgColor,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -243,16 +216,15 @@ Future<void> showAlert(BuildContext context, String title, String content,
   );
 }
 
-Uri tictactoeUrl = Uri.parse('http://192.168.43.103/ebrsng-api/tictactoe');
-Uri websiteUrl = Uri.parse('https://blackstackhub.com/ebrsng');
+Uri tictactoeUrl = Uri.parse('https://ebrsng.blackstackhub.com/tictactoe');
+Uri websiteUrl = Uri.parse('https://ebrsng.blackstackhub.com');
 
-Uri bankAccountUrl = Uri.parse('http://192.168.43.103/ebrsng-api/bank');
-Uri rewardUrl = Uri.parse('http://192.168.43.103/ebrsng-api/reward');
-Uri signUpUrl = Uri.parse('http://192.168.43.103/ebrsng-api/signup');
-Uri signInUrl = Uri.parse('http://192.168.43.103/ebrsng-api/signin');
+Uri bankAccountUrl = Uri.parse('https://ebrsng.blackstackhub.com/bank');
+Uri rewardUrl = Uri.parse('https://ebrsng.blackstackhub.com/reward');
+Uri signUpUrl = Uri.parse('https://ebrsng.blackstackhub.com/signup');
+Uri signInUrl = Uri.parse('https://ebrsng.blackstackhub.com/signin');
 Uri notificationUrl =
-    Uri.parse('http://192.168.43.103/ebrsng-api/notification');
-Uri usernameUrl = Uri.parse('http://192.168.43.103/ebrsng-api/username');
+    Uri.parse('https://ebrsng.blackstackhub.com/notification');
+Uri usernameUrl = Uri.parse('https://ebrsng.blackstackhub.com/username');
 
-Uri activateUrl = Uri.parse('http://192.168.43.103/ebrsng-api/activate');
-Uri cashOutUrl = Uri.parse('http://192.168.43.103/ebrsng-api/cashout');
+Uri cashOutUrl = Uri.parse('https://ebrsng.blackstackhub.com/cashout');
