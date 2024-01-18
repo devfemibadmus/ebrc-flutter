@@ -56,303 +56,215 @@ class HomePage extends StatelessWidget {
             return const WelcomePage();
           } else if (snapshot.hasData) {
             Account? user = snapshot.data;
-            return AdvancedDrawer(
-              backdropColor: bgColor,
-              animationCurve: Curves.easeInOut,
-              animationDuration: const Duration(milliseconds: 300),
-              controller: _AdvancedDrawerController,
-              animateChildDecoration: true,
-              rtlOpening: false,
-              disabledGestures: false,
-              childDecoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: bgColor,
-                    blurRadius: 20.0,
-                    spreadRadius: 5.0,
-                    offset: const Offset(-20.0, 0.0),
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(30),
+            return Scaffold(
+              backgroundColor: Colors.grey.shade100,
+              appBar: AppBar(
+                backgroundColor: bgColor,
+                title: const Text('Earn By Rewards NG',
+                    style: TextStyle(color: Colors.white, fontSize: 18)),
               ),
-              drawer: SafeArea(
-                child: Container(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: ListTileTheme(
-                    textColor: Colors.white70,
-                    iconColor: Colors.white70,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30.0),
-                          child: Row(
-                            children: <Widget>[
+              body: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    // ₦ Balance
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: h <= 500 ? h / 2 : h / 3.5,
+                      margin: const EdgeInsets.all(10),
+                      alignment: Alignment.center,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
                               Text(
-                                '@${user!.username}',
-                                style: const TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
+                                '₦',
+                                style: TextStyle(color: bgColor, fontSize: 22),
+                              ),
+                              const SizedBox(
+                                width: 3,
+                              ),
+                              Text(
+                                formatNumber(user!.earnBalance ?? 0),
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  color: bgColor,
+                                ),
                               ),
                             ],
                           ),
-                        ),
-                        const Divider(
-                          color: kPrimaryColor,
-                        ),
-                        ListTile(
-                          leading: const Icon(Icons.people),
-                          title: const Text('Referrals'),
-                          onTap: () {
-                            Navigator.pushNamed(context, '/referral');
-                          },
-                        ),
-                        ListTile(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/notification');
-                          },
-                          leading: const Icon(Icons.notifications),
-                          title: const Text('Notifications'),
-                        ),
-                        ListTile(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/task');
-                          },
-                          leading: const Icon(Icons.task),
-                          title: const Text('Tasks'),
-                        ),
-                        ListTile(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/cash');
-                          },
-                          leading: const Text(
-                            '₦',
-                            style: TextStyle(fontSize: 35),
+                          const SizedBox(
+                            height: 10,
                           ),
-                          title: const Text('Cash Out'),
-                        ),
-                        const Divider(color: kPrimaryColor),
-                        ListTile(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/settings');
-                          },
-                          leading: const Icon(Icons.settings),
-                          title: const Text('Settings'),
-                        ),
-                        ListTile(
-                          onTap: () {
-                            logOut();
-                            Navigator.pushReplacementNamed(context, '/welcome');
-                          },
-                          leading: const Icon(Icons.logout),
-                          title: const Text('Logout'),
-                        ),
-                        ListTile(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/website');
-                          },
-                          leading: const Icon(Icons.support),
-                          title: const Text('Website'),
-                        ),
-                        const Divider(color: kPrimaryColor),
-                        const Spacer(),
-                        const ListTile(
-                          leading: Text(
-                            'v 1.0.3',
-                            style: TextStyle(color: kPrimaryColor),
+                          MaterialButton(
+                            height: 30,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 0),
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      const NotificationPage()));
+                            },
+                            color: Colors.transparent,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  color: Colors.grey.shade300, width: 1),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: const Text(
+                              'History',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 10),
+                            ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              child: Scaffold(
-                backgroundColor: Colors.grey.shade100,
-                appBar: AppBar(
-                  backgroundColor: bgColor,
-                  title: const Text('Earn By Rewards NG',
-                      style: TextStyle(color: Colors.white, fontSize: 18)),
-                  leading: IconButton(
-                    color: Colors.white,
-                    onPressed: _handleMenuButtonPressed,
-                    icon: ValueListenableBuilder<AdvancedDrawerValue>(
-                      valueListenable: _AdvancedDrawerController,
-                      builder: (_, value, __) {
-                        return AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 250),
-                          child: Icon(
-                            value.visible ? Icons.clear : Icons.menu,
-                            key: ValueKey<bool>(value.visible),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-                body: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      // ₦ Balance
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: h <= 500 ? h / 2 : h / 3.5,
-                        margin: const EdgeInsets.all(10),
-                        alignment: Alignment.center,
+                    // Total Balance
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: h <= 500 ? h / 2 : h / 3.5,
+                      margin: const EdgeInsets.all(20),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: bgColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            const Text(
+                              "coins 10,000 make ₦5,000",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  '₦',
-                                  style:
-                                      TextStyle(color: bgColor, fontSize: 22),
+                                const Text(
+                                  'coin',
+                                  style: TextStyle(
+                                      color: Colors.white70, fontSize: 25),
                                 ),
                                 const SizedBox(
                                   width: 3,
                                 ),
                                 Text(
-                                  formatNumber(user.earnBalance ?? 0),
-                                  style: TextStyle(
-                                    fontSize: 28,
+                                  formatNumber(user.coinBalance ?? 0),
+                                  style: const TextStyle(
+                                    fontSize: 37,
                                     fontWeight: FontWeight.bold,
-                                    color: bgColor,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            MaterialButton(
-                              height: 30,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 0),
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        const NotificationPage()));
-                              },
-                              color: Colors.transparent,
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                    color: Colors.grey.shade300, width: 1),
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: const Text(
-                                'History',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 10),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
                           ],
                         ),
                       ),
-                      // Total Balance
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: h <= 500 ? h / 2 : h / 3.5,
-                        margin: const EdgeInsets.all(20),
-                        alignment: Alignment.center,
+                    ),
+                  ],
+                ),
+              ),
+              drawer: Drawer(
+                child: Column(
+                  children: [
+                    DrawerHeader(
+                      decoration: BoxDecoration(
+                        color: bgColor,
+                      ),
+                      child: UserAccountsDrawerHeader(
+                        margin: EdgeInsets.zero,
+                        accountName: Text(
+                          '@${user.username}',
+                          style: const TextStyle(
+                              fontSize: 18, color: kPrimaryColor),
+                        ),
+                        accountEmail: Text(
+                          '${user.email}',
+                          style: const TextStyle(
+                              fontSize: 14, color: kPrimaryColor),
+                        ),
                         decoration: BoxDecoration(
                           color: bgColor,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "₦100 minimum withdraw(24hrs)",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    '₦',
-                                    style: TextStyle(
-                                        color: Colors.white70, fontSize: 25),
-                                  ),
-                                  const SizedBox(
-                                    width: 3,
-                                  ),
-                                  Text(
-                                    formatNumber(user.accountBalance ?? 0),
-                                    style: const TextStyle(
-                                      fontSize: 37,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
                         ),
                       ),
-                      // Total Balance
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: h <= 500 ? h / 2 : h / 3.5,
-                        margin: const EdgeInsets.all(20),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: bgColor,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "coins 10,000 make ₦5,000",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    'coin',
-                                    style: TextStyle(
-                                        color: Colors.white70, fontSize: 25),
-                                  ),
-                                  const SizedBox(
-                                    width: 3,
-                                  ),
-                                  Text(
-                                    formatNumber(user.coinBalance ?? 0),
-                                    style: const TextStyle(
-                                      fontSize: 37,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.people),
+                      title: const Text('Referrals'),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/referral');
+                      },
+                    ),
+                    ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/notification');
+                      },
+                      leading: const Icon(Icons.notifications),
+                      title: const Text('Notifications'),
+                    ),
+                    ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/task');
+                      },
+                      leading: const Icon(Icons.task),
+                      title: const Text('Tasks'),
+                    ),
+                    ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/cash');
+                      },
+                      leading: const Text(
+                        '₦',
+                        style: TextStyle(fontSize: 35),
                       ),
-                    ],
-                  ),
+                      title: const Text('Cash Out'),
+                    ),
+                    Divider(color: bgColor),
+                    ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/settings');
+                      },
+                      leading: const Icon(Icons.settings),
+                      title: const Text('Settings'),
+                    ),
+                    ListTile(
+                      onTap: () {
+                        logOut();
+                        Navigator.pushReplacementNamed(context, '/welcome');
+                      },
+                      leading: const Icon(Icons.logout),
+                      title: const Text('Logout'),
+                    ),
+                    ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/website');
+                      },
+                      leading: const Icon(Icons.support),
+                      title: const Text('Website'),
+                    ),
+                    Divider(color: bgColor),
+                    const Spacer(),
+                    ListTile(
+                      leading: Text(
+                        'v 1.0.3',
+                        style: TextStyle(color: bgColor),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             );
