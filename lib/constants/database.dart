@@ -269,6 +269,8 @@ Future<String?> signUp(
         },
       ));
 
+  print(response.statusCode);
+  print(response.body);
   if (response.statusCode == 200) {
     var responseJson = jsonDecode(response.body);
     if (responseJson['status'] == 'success') {
@@ -294,7 +296,11 @@ Future<bool> rewardUser(int reward) async {
     }
     Account account = Account.fromJson(jsonDecode(accountJson));
     // Update the account's reward
-    account.coinBalance = (account.coinBalance ?? 0) + reward;
+    if (reward >= 300) {
+      account.coinBalance = (account.coinBalance ?? 0) + 2;
+    } else {
+      account.coinBalance = (account.coinBalance ?? 0) + 1;
+    }
 
     // Add a notification
     String notificationMessage = 'You just earned $reward from ads you watched';
