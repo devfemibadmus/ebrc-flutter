@@ -186,8 +186,8 @@ class SigninFormState extends State<SigninForm> {
 
 class SigninPageTopImage extends StatelessWidget {
   const SigninPageTopImage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -215,7 +215,7 @@ class SigninPageTopImage extends StatelessWidget {
 }
 
 class SigninPage extends StatelessWidget {
-  const SigninPage({Key? key}) : super(key: key);
+  const SigninPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -252,8 +252,8 @@ class SigninPage extends StatelessWidget {
 
 class MobileSigninPage extends StatelessWidget {
   const MobileSigninPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
