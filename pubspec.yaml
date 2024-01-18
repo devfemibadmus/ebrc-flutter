@@ -3,7 +3,7 @@ description: Earn By Rewards NG.
 
 publish_to: 'none'
 
-version: 2.0.0+15
+version: 1.0.3+15
 environment:
   sdk: '>=2.18.4 <3.0.0'
   
@@ -13,30 +13,18 @@ dependencies:
   flutter_advanced_drawer: ^1.2.3+1
   shared_preferences: ^2.0.17
   cupertino_icons: ^1.0.2
-  http: ^0.13.5
-  provider: ^6.0.5
-  google_mobile_ads: ^2.3.0
-  webview_flutter: ^3.0.1
-  webview_flutter_plus: ^0.3.0+2
+  http: ^1.1.2
+  google_mobile_ads: ^4.0.0
+  webview_flutter: ^4.0.5
   url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # The following section is specific to Flutter packages.
 flutter:
-  fonts:
-    - family: Dongle
-      fonts:
-        - asset: fonts/Dongle-Regular.ttf
-    - family: Roboto_Mono
-      fonts:
-        - asset: fonts/RobotoMono-Regular.ttf
-    - family: Oswald
-      fonts:
-        - asset: fonts/Oswald-Regular.ttf
   uses-material-design: true
   assets:
     - assets/
