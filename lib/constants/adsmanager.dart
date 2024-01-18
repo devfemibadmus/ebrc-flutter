@@ -76,24 +76,26 @@ class AdManager {
       adUnitId: GoogleAdmob.bannerAdUnitId,
       request: const AdRequest(),
       size: AdSize.largeBanner,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          print('BannerAd loaded');
-        },
-        onAdFailedToLoad: (ad, err) => ad.dispose(),
-      ),
+      listener: BannerAdListener(onAdLoaded: (ad) {
+        print('BannerAd loaded');
+      }, onAdFailedToLoad: (ad, err) {
+        ad.dispose();
+        preloadBannerAd;
+      }),
     );
     _bannerAd!.load();
   }
 
   void showInterstitialAd() {
     InterstitialAd? interstitialAd = _interstitialAd;
-
     if (interstitialAd != null) {
       interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
         onAdDismissedFullScreenContent: (InterstitialAd ad) {
           ad.dispose();
-          preloadInterstitialAd(); // Preload a new interstitial ad
+          if (_rewardedAd != null) {
+            showRewardedAd();
+          }
+          preloadInterstitialAd();
         },
       );
       interstitialAd.show();
@@ -102,12 +104,14 @@ class AdManager {
 
   void showRewardedAd() {
     RewardedAd? rewardedAd = _rewardedAd;
-
     if (rewardedAd != null) {
       rewardedAd.fullScreenContentCallback = FullScreenContentCallback(
         onAdDismissedFullScreenContent: (RewardedAd ad) {
           ad.dispose();
-          preloadRewardedAd(); // Preload a new rewarded ad
+          if (_interstitialAd != null) {
+            showInterstitialAd();
+          }
+          preloadRewardedAd;
         },
         onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError error) {
           print('Failed to show rewarded ad: $error');
