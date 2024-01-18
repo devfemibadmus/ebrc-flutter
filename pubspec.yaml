@@ -1,4 +1,4 @@
-name: ebrsng
+name: ebrc
 description: Earn By Rewards NG.
 
 publish_to: 'none'
@@ -10,13 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_advanced_drawer: ^1.2.3+1
-  shared_preferences: ^2.0.17
+  shared_preferences: ^2.2.2
   cupertino_icons: ^1.0.2
-  http: ^1.1.2
+  http: ^1.2.0
   google_mobile_ads: ^4.0.0
   webview_flutter: ^4.0.5
-  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:

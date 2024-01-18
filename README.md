@@ -1,10 +1,7 @@
-
-  
-
-# EBRSNG App - Flutter Frontend Repository
+# EBRC App - Flutter Frontend Repository
 
 ## Table of Contents
-1. [EBRSNG App - Flutter Frontend Repository](#ebrsng-app---flutter-frontend-repository)
+1. [EBRC App - Flutter Frontend Repository](#ebrc-app---flutter-frontend-repository)
 2. [Flutter](#flutter)
    - [Form Validation](#form-validation)
    - [Load JSON Data from API and Return JSON Data](#load-json-data-from-api-and-return-json-data)
@@ -16,9 +13,9 @@
 
   
 
-This repository houses the UI/UX for the [ebrsngapi-php](https://github.com/devfemibadmus/ebrsngapi-php) (server-side). This app is design basically to watch ads and make money. 
+This repository houses the UI/UX for the [ebrcapi-php](https://github.com/devfemibadmus/ebrcapi-php) (server-side). This app is design basically to watch ads and make money. 
 
-  **ADVANTAGES OF WATCHING ADS ON EBRSNG  AND MINIMIZING COSTS**
+  **ADVANTAGES OF WATCHING ADS ON EBRC  AND MINIMIZING COSTS**
 
 1.  **Monetize Your Time:**
     
@@ -46,11 +43,11 @@ This repository houses the UI/UX for the [ebrsngapi-php](https://github.com/devf
     
     -   Users can diversify their earnings by engaging with different types of ads, ensuring a dynamic and rewarding experience.
 
-[![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrsng&hl=en-US&ah=WNIlRmUKRT1YYCEwY8gCKLCtK-k)
+[![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrc&hl=en-US&ah=WNIlRmUKRT1YYCEwY8gCKLCtK-k)
 
   
 
-## Flutter (here are things you can benefit from this app as a newbie flutter dev or intermediate). 
+## Flutter (code review). 
 
  1. **form validation**  
     - (lib/authentication/signin_screen.dart)
@@ -261,12 +258,12 @@ newaccount = Account.fromJson(myJsonData);
 // now we can use account in our class like 
 // newaccount.id unlike reading for all in each json
 
-// below is sample signin that fetch data from the ebrsng api(php) and load to the Class to have an instance
+// below is sample signin that fetch data from the ebrc api(php) and load to the Class to have an instance
 
 // future
 Future<Account?> signIn(String username, String password) async {
   // Send a POST request to the signInUrl with the provided username and password
-  // signInUrl is already define as https://ebrsng.blackstackhub/signin
+  // signInUrl is already define as https://ebrc.blackstackhub/signin
   final response = await http.post(
     signInUrl,
     body: jsonEncode(
@@ -338,8 +335,8 @@ Account defaultAccount = Account(
     - (lib/constants/admob.dart)
  ```dart
  // Import necessary dependencies and files
-import 'package:ebrsng/constants/variables.dart';
-import 'package:ebrsng/constants/database.dart';
+import 'package:ebrc/constants/variables.dart';
+import 'package:ebrc/constants/database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -446,9 +443,9 @@ class AdmobModel with ChangeNotifier {
     - (lib/tasks/ads.dart)
 ```dart
 // Import necessary dependencies and files
-import 'package:ebrsng/constants/admob.dart';
-import 'package:ebrsng/constants/variables.dart';
-import 'package:ebrsng/constants/database.dart';
+import 'package:ebrc/constants/admob.dart';
+import 'package:ebrc/constants/variables.dart';
+import 'package:ebrc/constants/database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
@@ -560,13 +557,21 @@ class AdsState extends State<Ads> {
 
 ![working terminal](readme/Screenshot%20(1099).png?raw=true)
 
-[![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrsng&hl=en-US&ah=WNIlRmUKRT1YYCEwY8gCKLCtK-k)
+[![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrc&hl=en-US&ah=WNIlRmUKRT1YYCEwY8gCKLCtK-k)
 
   
   ## TO-DO UPDATES
   
  - settings updated successfully make input not editable immediately not util user comes back
  - settings password update doesn't alert
+
+
+## Features
+
+Fetch, stream, and render data from given API. 
+Minimize data.
+Validate form.
+Serves ads 😂😂😂
 
 
 ## Contribution
@@ -576,10 +581,4 @@ Whether you have updates, corrections, or any valuable input, feel free to open 
 This app is designed to be simple, and I welcome any suggestions or improvements to enhance its functionality. Your feedback helps make this project better for everyone.
 
 If you encounter any issues or have ideas for improvements, please don't hesitate to share them.
-
-## App Background
-
-Two years ago, faced with frequent power supply issues in my living compound, I created the EBRSNG app. Designed with [ebrsngapi-php](https://github.com/devfemibadmus/ebrsngapi-php) for the backend and FLUTTER for the frontend, the app allowed users to earn rewards by completing tasks and watching ads. In just two months, we generated $149 from Google AdMob, helping us cope with the challenges of power supply.
-
-Though I deleted the app last year, I've decided to bring it back. I invite anyone interested in replicating the idea or contributing to the project to contact me for updated requirements.
 

@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:ebrsng/constants/adsmanager.dart';
-import 'package:ebrsng/constants/variables.dart';
+import 'package:ebrc/constants/adsmanager.dart';
+import 'package:ebrc/constants/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 

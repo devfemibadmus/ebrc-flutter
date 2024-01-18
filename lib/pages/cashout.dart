@@ -1,5 +1,5 @@
-import 'package:ebrsng/constants/variables.dart';
-import 'package:ebrsng/constants/database.dart';
+import 'package:ebrc/constants/variables.dart';
+import 'package:ebrc/constants/database.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

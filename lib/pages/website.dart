@@ -1,4 +1,4 @@
-import 'package:ebrsng/constants/variables.dart';
+import 'package:ebrc/constants/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -25,7 +25,7 @@ class WebsitePageState extends State<WebsitePage> {
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      label: "This is our website page, contact us @ebrsng on telegram",
+      label: "This is our website page, contact us @ebrc on telegram",
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Website"),

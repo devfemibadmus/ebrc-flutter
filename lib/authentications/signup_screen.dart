@@ -1,9 +1,9 @@
-import 'package:ebrsng/authentications/signin_screen.dart';
-import 'package:ebrsng/authentications/responsive.dart';
-import 'package:ebrsng/home.dart';
+import 'package:ebrc/authentications/signin_screen.dart';
+import 'package:ebrc/authentications/responsive.dart';
+import 'package:ebrc/home.dart';
 import 'package:flutter/material.dart';
-import 'package:ebrsng/constants/variables.dart';
-import 'package:ebrsng/constants/database.dart';
+import 'package:ebrc/constants/variables.dart';
+import 'package:ebrc/constants/database.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -356,7 +356,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      label: "Welcome to ebrsng signup an account and start earning",
+      label: "Welcome to ebrc signup an account and start earning",
       child: const Background(
         child: SingleChildScrollView(
           child: Responsive(

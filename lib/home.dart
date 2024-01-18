@@ -1,9 +1,8 @@
-import 'package:ebrsng/constants/variables.dart';
-import 'package:ebrsng/pages/notification.dart';
+import 'package:ebrc/constants/variables.dart';
+import 'package:ebrc/pages/notification.dart';
 import 'package:flutter/material.dart';
-import 'package:ebrsng/constants/database.dart';
-import 'package:ebrsng/authentications/welcome_screen.dart';
-import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:ebrc/constants/database.dart';
+import 'package:ebrc/authentications/welcome_screen.dart';
 
 class IndexPage extends StatefulWidget {
   const IndexPage({super.key});
@@ -14,11 +13,6 @@ class IndexPage extends StatefulWidget {
 
 class IndexPageState extends State<IndexPage> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return FutureBuilder<Account>(
       future: getAccountFromSharedPrefs(),
@@ -26,7 +20,7 @@ class IndexPageState extends State<IndexPage> {
         if (snapshot.hasError) {
           return const WelcomePage();
         } else if (snapshot.hasData) {
-          return HomePage();
+          return const HomePage();
         }
         return const Center(
             child: CircularProgressIndicator(color: kPrimaryLightColor));
@@ -35,12 +29,27 @@ class IndexPageState extends State<IndexPage> {
   }
 }
 
-class HomePage extends StatelessWidget {
-  HomePage({
-    super.key,
-  });
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
-  final _AdvancedDrawerController = AdvancedDrawerController();
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late Future<Account> accountFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    accountFuture = getAccountFromSharedPrefs();
+  }
+
+  Future<void> refreshData() async {
+    setState(() {
+      accountFuture = getAccountFromSharedPrefs();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +57,7 @@ class HomePage extends StatelessWidget {
     return Semantics(
       label: "Home Page",
       child: FutureBuilder<Account>(
-        future: getAccountFromSharedPrefs(),
+        future: accountFuture,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             print(snapshot);
@@ -274,9 +283,5 @@ class HomePage extends StatelessWidget {
         },
       ),
     );
-  }
-
-  void _handleMenuButtonPressed() {
-    _AdvancedDrawerController.showDrawer();
   }
 }

@@ -1,4 +1,4 @@
-import 'package:ebrsng/constants/variables.dart';
+import 'package:ebrc/constants/variables.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -295,19 +295,21 @@ Future<bool> rewardUser(int reward) async {
       return false;
     }
     Account account = Account.fromJson(jsonDecode(accountJson));
-    // Update the account's reward
+    String? username = account.username;
+    String? password = account.password;
+    int rewad;
     if (reward >= 300) {
-      account.coinBalance = (account.coinBalance ?? 0) + 2;
+      rewad = 2;
     } else {
-      account.coinBalance = (account.coinBalance ?? 0) + 1;
+      rewad = 1;
     }
 
-    // Add a notification
     String notificationMessage = 'You just earned $reward from ads you watched';
+    account.coinBalance = (account.coinBalance ?? 0) + rewad;
     Notification newNotification = Notification(
       date: DateTime.now().toString(),
       type: 'coin',
-      amount: reward,
+      amount: rewad,
       comment: notificationMessage,
       referral: '',
       accountId: account.id ?? 0,
@@ -333,7 +335,7 @@ Future<bool> rewardUser(int reward) async {
     if (response.statusCode == 200) {
       var responseJson = jsonDecode(response.body);
       if (responseJson['status'] == 'success') {
-        // Handle the success scenario
+        signIn(username!, password!);
         return true;
       } else {
         // Handle the scenario where the status is not 'success'

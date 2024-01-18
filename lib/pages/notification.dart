@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ebrsng/constants/variables.dart';
-import 'package:ebrsng/constants/database.dart';
+import 'package:ebrc/constants/variables.dart';
+import 'package:ebrc/constants/database.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});

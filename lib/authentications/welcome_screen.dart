@@ -1,7 +1,7 @@
-import 'package:ebrsng/authentications/signin_screen.dart';
-import 'package:ebrsng/authentications/signup_screen.dart';
-import 'package:ebrsng/constants/variables.dart';
-import 'package:ebrsng/authentications/responsive.dart';
+import 'package:ebrc/authentications/signin_screen.dart';
+import 'package:ebrc/authentications/signup_screen.dart';
+import 'package:ebrc/constants/variables.dart';
+import 'package:ebrc/authentications/responsive.dart';
 import 'package:flutter/material.dart';
 
 class LoginAndSignupBtn extends StatelessWidget {
@@ -57,7 +57,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Semantics(
       label:
-          "Welcome to ebrsng, do task and earn cash into your bank account hence no social media task",
+          "Welcome to ebrc, do task and earn cash into your bank account hence no social media task",
       child: const Background(
         child: SingleChildScrollView(
           child: SafeArea(

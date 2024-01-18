@@ -86,7 +86,7 @@ class WelcomeImage extends StatelessWidget {
     return Column(
       children: [
         const Text(
-          "WELCOME TO EBRSNG",
+          "WELCOME TO EBRC",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: defaultPadding * 2),
@@ -216,15 +216,15 @@ Future<void> showAlert(BuildContext context, String title, String content,
   );
 }
 
-Uri tictactoeUrl = Uri.parse('https://ebrsng.blackstackhub.com/tictactoe');
-Uri websiteUrl = Uri.parse('https://ebrsng.blackstackhub.com');
+Uri tictactoeUrl = Uri.parse('https://ebrc.blackstackhub.com/tictactoe');
+Uri websiteUrl = Uri.parse('https://ebrc.blackstackhub.com');
 
-Uri bankAccountUrl = Uri.parse('https://ebrsng.blackstackhub.com/bank');
-Uri rewardUrl = Uri.parse('https://ebrsng.blackstackhub.com/reward');
-Uri signUpUrl = Uri.parse('https://ebrsng.blackstackhub.com/signup');
-Uri signInUrl = Uri.parse('https://ebrsng.blackstackhub.com/signin');
+Uri bankAccountUrl = Uri.parse('https://ebrc.blackstackhub.com/bank');
+Uri rewardUrl = Uri.parse('https://ebrc.blackstackhub.com/reward');
+Uri signUpUrl = Uri.parse('https://ebrc.blackstackhub.com/signup');
+Uri signInUrl = Uri.parse('https://ebrc.blackstackhub.com/signin');
 Uri notificationUrl =
-    Uri.parse('https://ebrsng.blackstackhub.com/notification');
-Uri usernameUrl = Uri.parse('https://ebrsng.blackstackhub.com/username');
+    Uri.parse('https://ebrc.blackstackhub.com/notification');
+Uri usernameUrl = Uri.parse('https://ebrc.blackstackhub.com/username');
 
-Uri cashOutUrl = Uri.parse('https://ebrsng.blackstackhub.com/cashout');
+Uri cashOutUrl = Uri.parse('https://ebrc.blackstackhub.com/cashout');

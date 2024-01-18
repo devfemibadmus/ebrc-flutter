@@ -1,9 +1,9 @@
-import 'package:ebrsng/home.dart';
-import 'package:ebrsng/constants/variables.dart';
-import 'package:ebrsng/constants/database.dart';
+import 'package:ebrc/home.dart';
+import 'package:ebrc/constants/variables.dart';
+import 'package:ebrc/constants/database.dart';
 import 'package:flutter/material.dart';
-import 'package:ebrsng/authentications/responsive.dart';
-import 'package:ebrsng/authentications/signup_screen.dart';
+import 'package:ebrc/authentications/responsive.dart';
+import 'package:ebrc/authentications/signup_screen.dart';
 
 class SigninForm extends StatefulWidget {
   const SigninForm({super.key});

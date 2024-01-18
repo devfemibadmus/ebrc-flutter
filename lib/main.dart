@@ -1,13 +1,13 @@
-import 'package:ebrsng/authentications/welcome_screen.dart';
-import 'package:ebrsng/constants/adsmanager.dart';
-import 'package:ebrsng/constants/variables.dart';
-import 'package:ebrsng/home.dart';
-import 'package:ebrsng/pages/cashout.dart';
-import 'package:ebrsng/pages/notification.dart';
-import 'package:ebrsng/pages/referral.dart';
-import 'package:ebrsng/pages/settings.dart';
-import 'package:ebrsng/pages/website.dart';
-import 'package:ebrsng/tasks/ads.dart';
+import 'package:ebrc/authentications/welcome_screen.dart';
+import 'package:ebrc/constants/adsmanager.dart';
+import 'package:ebrc/constants/variables.dart';
+import 'package:ebrc/home.dart';
+import 'package:ebrc/pages/cashout.dart';
+import 'package:ebrc/pages/notification.dart';
+import 'package:ebrc/pages/referral.dart';
+import 'package:ebrc/pages/settings.dart';
+import 'package:ebrc/pages/website.dart';
+import 'package:ebrc/tasks/ads.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -106,7 +106,7 @@ class SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: 20),
-              Text('EBRSNG',
+              Text('EBRC',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
