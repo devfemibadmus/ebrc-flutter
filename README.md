@@ -13,7 +13,7 @@
 
   
 
-This repository houses the UI/UX for the [ebrcapi-php](https://github.com/devfemibadmus/ebrcapi-php) (server-side). This app is design basically to watch ads and make money. 
+This repository houses the UI/UX for the [ebrc-php](https://github.com/devfemibadmus/ebrc-php) server-side. This app is design basically to watch ads and make money. 
 
   **ADVANTAGES OF WATCHING ADS ON EBRC  AND MINIMIZING COSTS**
 
