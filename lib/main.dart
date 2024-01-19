@@ -112,7 +112,7 @@ class SplashScreenState extends State<SplashScreen> {
                       fontWeight: FontWeight.bold,
                       fontSize: 24)),
               SizedBox(height: 10),
-              Text('Earn By Rewards NG',
+              Text('Earn By Rewards Coin',
                   style: TextStyle(color: Colors.white, fontSize: 18)),
               SizedBox(height: 20),
               CircularProgressIndicator(

@@ -542,7 +542,6 @@ class AdsState extends State<Ads> {
 
 ```
 
-![working terminal](readme/Screenshot%20(1099).png?raw=true)
 
 [![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrc)
 

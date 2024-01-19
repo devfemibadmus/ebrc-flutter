@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: Colors.grey.shade100,
               appBar: AppBar(
                 backgroundColor: bgColor,
-                title: const Text('Earn By Rewards NG',
+                title: const Text('Earn By Rewards Coin',
                     style: TextStyle(color: Colors.white, fontSize: 18)),
               ),
               body: SingleChildScrollView(
@@ -269,7 +269,7 @@ class _HomePageState extends State<HomePage> {
                     const Spacer(),
                     ListTile(
                       leading: Text(
-                        'v 1.0.3',
+                        'v 1.0.4',
                         style: TextStyle(color: bgColor),
                       ),
                     ),
