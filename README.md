@@ -32,23 +32,6 @@ This repository houses the UI/UX for the [ebrc-php](https://github.com/devfemiba
 
 [![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrc)
 
-  
-
-| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231922.jpg?raw=true)| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231926.jpg?raw=true) |
-|--|--|
-
-| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231930.jpg?raw=true) | ![app screenshot on physical device](AppIcons/Screenshot_20240118-231934.jpg?raw=true) |
-|--|--|
-
-| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231949.jpg?raw=true)| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231954.jpg?raw=true) |
-|--|--|
-
-| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231958.jpg?raw=true) | ![app screenshot on physical device](AppIcons/Screenshot_20240118-232003.jpg?raw=true) |
-|--|--|
-
-| ![app screenshot on physical device](AppIcons/Screenshot_20240118-232022.jpg?raw=true)| ![app screenshot on physical device](AppIcons/Screenshot_20240118-233316.jpg?raw=true) |
-|--|--|
-
 
 ## Flutter (code review). 
 
@@ -561,7 +544,25 @@ class AdsState extends State<Ads> {
 
 [![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrc)
 
-  
+
+
+| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231922.jpg?raw=true)| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231926.jpg?raw=true) |
+|--|--|
+
+| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231930.jpg?raw=true) | ![app screenshot on physical device](AppIcons/Screenshot_20240118-231934.jpg?raw=true) |
+|--|--|
+
+| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231949.jpg?raw=true)| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231954.jpg?raw=true) |
+|--|--|
+
+| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231958.jpg?raw=true) | ![app screenshot on physical device](AppIcons/Screenshot_20240118-232003.jpg?raw=true) |
+|--|--|
+
+| ![app screenshot on physical device](AppIcons/Screenshot_20240118-232022.jpg?raw=true)| ![app screenshot on physical device](AppIcons/Screenshot_20240118-233316.jpg?raw=true) |
+|--|--|
+
+
+
   ## TO-DO UPDATES
   
  - settings updated successfully make input not editable immediately not util user comes back
