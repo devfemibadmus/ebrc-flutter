@@ -1,18 +1,5 @@
 # EBRC App - Flutter Frontend Repository
 
-## Table of Contents
-1. [EBRC App - Flutter Frontend Repository](#ebrc-app---flutter-frontend-repository)
-2. [Flutter](#flutter)
-   - [Form Validation](#form-validation)
-   - [Load JSON Data from API and Return JSON Data](#load-json-data-from-api-and-return-json-data)
-   - [Integrating Google AdMob](#integrating-google-admob)
-   - [Showing Ads](#showing-ads)
-
-3. [TO-DO UPDATES](#to-do-updates)
-4. [Contribution](#contribution)
-
-  
-
 This repository houses the UI/UX for the [ebrc-php](https://github.com/devfemibadmus/ebrc-php) server-side. This app is design basically to watch ads and make money. 
 
   **ADVANTAGES OF WATCHING ADS ON EBRC  AND MINIMIZING COSTS**
@@ -43,7 +30,7 @@ This repository houses the UI/UX for the [ebrc-php](https://github.com/devfemiba
     
     -   Users can diversify their earnings by engaging with different types of ads, ensuring a dynamic and rewarding experience.
 
-[![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrc&hl=en-US&ah=WNIlRmUKRT1YYCEwY8gCKLCtK-k)
+[![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrc)
 
   
 
@@ -557,7 +544,7 @@ class AdsState extends State<Ads> {
 
 ![working terminal](readme/Screenshot%20(1099).png?raw=true)
 
-[![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrc&hl=en-US&ah=WNIlRmUKRT1YYCEwY8gCKLCtK-k)
+[![Download on Google Play](https://cloud.githubusercontent.com/assets/5692567/10923351/6b688a92-8278-11e5-9973-8ffbf3c5cc52.png)](https://play.google.com/store/apps/details?id=com.blackstackhub.ebrc)
 
   
   ## TO-DO UPDATES
