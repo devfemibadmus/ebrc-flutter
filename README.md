@@ -34,6 +34,22 @@ This repository houses the UI/UX for the [ebrc-php](https://github.com/devfemiba
 
   
 
+| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231922.jpg?raw=true)| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231926.jpg?raw=true) |
+|--|--|
+
+| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231930.jpg?raw=true) | ![app screenshot on physical device](AppIcons/Screenshot_20240118-231934.jpg?raw=true) |
+|--|--|
+
+| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231949.jpg?raw=true)| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231954.jpg?raw=true) |
+|--|--|
+
+| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231958.jpg?raw=true) | ![app screenshot on physical device](AppIcons/Screenshot_20240118-232003.jpg?raw=true) |
+|--|--|
+
+| ![app screenshot on physical device](AppIcons/Screenshot_20240118-232022.jpg?raw=true)| ![app screenshot on physical device](AppIcons/Screenshot_20240118-233316.jpg?raw=true) |
+|--|--|
+
+
 ## Flutter (code review). 
 
  1. **form validation**  
