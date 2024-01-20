@@ -34,5 +34,6 @@ app.*.symbols
 app.*.map.json
 
 build/
-android/
-web/
+android/key.properties
+android/local.properties
+# secrete 
