@@ -238,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                       },
                       leading: const Text(
                         '₦',
-                        style: TextStyle(fontSize: 35),
+                        style: TextStyle(fontSize: 20),
                       ),
                       title: const Text('Cash Out'),
                     ),

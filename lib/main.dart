@@ -15,7 +15,7 @@ void main() {
   runApp(
     MaterialApp(
       routes: {
-        '/home': (context) => HomePage(),
+        '/home': (context) => const HomePage(),
         '/': (context) => const SplashScreen(),
         '/task': (context) => AdScreen(
               adManager: adManager,
@@ -87,7 +87,7 @@ class SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => const HomePage()),
       );
     });
   }
@@ -114,9 +114,6 @@ class SplashScreenState extends State<SplashScreen> {
               SizedBox(height: 10),
               Text('Earn By Rewards Coin',
                   style: TextStyle(color: Colors.white, fontSize: 18)),
-              SizedBox(height: 20),
-              CircularProgressIndicator(
-                  color: Color.fromARGB(255, 201, 239, 199)),
             ],
           ),
         ),

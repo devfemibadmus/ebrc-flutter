@@ -46,7 +46,8 @@ class WebsitePageState extends State<WebsitePage> {
                       },
                     ),
                   )
-                  ..loadRequest(websiteUrl)),
+                  ..loadRequest(websiteUrl),
+              ),
       ),
     );
   }

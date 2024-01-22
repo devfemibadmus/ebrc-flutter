@@ -9,11 +9,11 @@ const double defaultPadding = 16.0;
 class Background extends StatelessWidget {
   final Widget child;
   const Background({
-    Key? key,
+    super.key,
     required this.child,
     this.topImage = "assets/images/main_top.png",
     this.bottomImage = "assets/images/login_bottom.png",
-  }) : super(key: key);
+  });
 
   final String topImage, bottomImage;
 
@@ -223,8 +223,5 @@ Uri bankAccountUrl = Uri.parse('https://ebrc.blackstackhub.com/bank');
 Uri rewardUrl = Uri.parse('https://ebrc.blackstackhub.com/reward');
 Uri signUpUrl = Uri.parse('https://ebrc.blackstackhub.com/signup');
 Uri signInUrl = Uri.parse('https://ebrc.blackstackhub.com/signin');
-Uri notificationUrl =
-    Uri.parse('https://ebrc.blackstackhub.com/notification');
+Uri notificationUrl = Uri.parse('https://ebrc.blackstackhub.com/notification');
 Uri usernameUrl = Uri.parse('https://ebrc.blackstackhub.com/username');
-
-Uri cashOutUrl = Uri.parse('https://ebrc.blackstackhub.com/cashout');
