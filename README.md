@@ -546,7 +546,7 @@ class AdsState extends State<Ads> {
 
 
 
-[![Admob earn screenshot](AppIcons/ebrc-admob.jpeg?raw=true)]
+![Admob earn screenshot](AppIcons/ebrc-admob.jpeg?raw=true)
 
 
 | ![app screenshot on physical device](AppIcons/Screenshot_20240118-231922.jpg?raw=true)| ![app screenshot on physical device](AppIcons/Screenshot_20240118-231926.jpg?raw=true) |
