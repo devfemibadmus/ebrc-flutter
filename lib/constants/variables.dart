@@ -216,12 +216,19 @@ Future<void> showAlert(BuildContext context, String title, String content,
   );
 }
 
-Uri tictactoeUrl = Uri.parse('https://ebrc.blackstackhub.com/tictactoe');
+Uri tictactoeUrl =
+    Uri.parse('https://devfemibadmus.blackstackhub.com/ebrc/tictactoe');
 Uri websiteUrl = Uri.parse('https://ebrc.blackstackhub.com');
 
-Uri bankAccountUrl = Uri.parse('https://ebrc.blackstackhub.com/bank');
-Uri rewardUrl = Uri.parse('https://ebrc.blackstackhub.com/reward');
-Uri signUpUrl = Uri.parse('https://ebrc.blackstackhub.com/signup');
-Uri signInUrl = Uri.parse('https://ebrc.blackstackhub.com/signin');
-Uri notificationUrl = Uri.parse('https://ebrc.blackstackhub.com/notification');
-Uri usernameUrl = Uri.parse('https://ebrc.blackstackhub.com/username');
+Uri bankAccountUrl =
+    Uri.parse('https://devfemibadmus.blackstackhub.com/ebrc/bank');
+Uri rewardUrl =
+    Uri.parse('https://devfemibadmus.blackstackhub.com/ebrc/reward');
+Uri signUpUrl =
+    Uri.parse('https://devfemibadmus.blackstackhub.com/ebrc/signup');
+Uri signInUrl =
+    Uri.parse('https://devfemibadmus.blackstackhub.com/ebrc/signin');
+Uri notificationUrl =
+    Uri.parse('https://devfemibadmus.blackstackhub.com/ebrc/notification');
+Uri usernameUrl =
+    Uri.parse('https://devfemibadmus.blackstackhub.com/ebrc/username');
